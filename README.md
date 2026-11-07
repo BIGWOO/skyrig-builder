@@ -40,26 +40,7 @@ This repository is an **interactive 3D simulation** of that idea: a 12-storey se
 
 ## How SkyRig works
 
-```mermaid
-flowchart LR
-    subgraph S1["1 · Before day one"]
-        direction TB
-        A["Design drawings"] --> B["AI turns drawings<br/>into build scripts"]
-        B --> C["Full virtual rehearsal<br/>in a digital twin"]
-        C -- "clash or conflict:<br/>fix and rerun" --> B
-    end
-    subgraph S2["2 · Factory"]
-        direction TB
-        D["Precast columns,<br/>beams and slabs"] --> E["Just-in-time delivery<br/>in lifting order"]
-    end
-    subgraph S3["3 · On site"]
-        direction TB
-        F["SkyRig climbs<br/>one floor every 2 days"] --> G["Top-out, canopy off,<br/>rig descends"]
-        G --> H["Robots finish interiors,<br/>digital as-built handover"]
-    end
-    S1 -- "verified" --> S2
-    S2 --> S3
-```
+<p align="center"><img src="docs/flow-en.png" alt="Three stages: before day one the AI writes and rehearses build scripts, the factory precasts and delivers in lifting order, and on site the rig climbs, descends and robots finish interiors" width="100%"></p>
 
 1. **Rehearse before you build.** The AI turns the drawings into scripts for every arm and robot, runs the full 90 days in a digital twin, and fixes clashes and sequencing conflicts before anything happens on site.
 2. **Cast in the factory, assemble on site.** Columns, beams, slabs and façade panels are precast and cured off site, then trucked in exactly in lifting order, so the street never queues and nothing is stockpiled.
@@ -166,6 +147,8 @@ Requires a browser with WebGL2.
 | **3,288** 件構件 | **1,072** 筆吊裝任務 | **238** 段機器人排程 | **10** 種情境演練 |
 
 ### 天架怎麼運作
+
+<p align="center"><img src="docs/flow-zh.png" alt="三個階段：開工前 AI 寫腳本並預演，工廠預鑄並照吊裝順序送達，工地由天架爬升、下降，再由機器人完成內裝" width="100%"></p>
 
 1. **先預演再開工：** AI 把設計圖拆成每支手臂與機器人的建造腳本，在數位雙生裡跑完 90 天。碰撞和工序衝突先抓出來修掉，驗證通過才動真正的工地。
 2. **工廠預鑄，工地組裝：** 柱、梁、樓板與外牆在工廠預鑄、養護達標才出廠，再依吊裝順序準時送到工地。到了就吊，街道不用排車，現場也不囤料。
