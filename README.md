@@ -42,14 +42,23 @@ This repository is an **interactive 3D simulation** of that idea: a 12-storey se
 
 ```mermaid
 flowchart LR
-    A["Design drawings"] --> B["AI parses drawings<br/>into build scripts"]
-    B --> C["Full virtual rehearsal<br/>(digital twin)"]
-    C -- "clash or sequence conflict" --> B
-    C -- "verified" --> D["Factory precasts<br/>columns, beams, slabs"]
-    D --> E["Just-in-time delivery<br/>in lifting order"]
-    E --> F["SkyRig climbs<br/>2-day floor cycle"]
-    F --> G["Top-out, canopy off,<br/>rig descends"]
-    G --> H["Robots finish interiors,<br/>digital as-built handover"]
+    subgraph S1["1 · Before day one"]
+        direction TB
+        A["Design drawings"] --> B["AI turns drawings<br/>into build scripts"]
+        B --> C["Full virtual rehearsal<br/>in a digital twin"]
+        C -- "clash or conflict:<br/>fix and rerun" --> B
+    end
+    subgraph S2["2 · Factory"]
+        direction TB
+        D["Precast columns,<br/>beams and slabs"] --> E["Just-in-time delivery<br/>in lifting order"]
+    end
+    subgraph S3["3 · On site"]
+        direction TB
+        F["SkyRig climbs<br/>one floor every 2 days"] --> G["Top-out, canopy off,<br/>rig descends"]
+        G --> H["Robots finish interiors,<br/>digital as-built handover"]
+    end
+    C -- "verified" --> D
+    E --> F
 ```
 
 1. **Rehearse before you build.** The AI turns the drawings into scripts for every arm and robot, runs the full 90 days in a digital twin, and fixes clashes and sequencing conflicts before anything happens on site.
