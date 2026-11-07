@@ -57,8 +57,8 @@ flowchart LR
         F["SkyRig climbs<br/>one floor every 2 days"] --> G["Top-out, canopy off,<br/>rig descends"]
         G --> H["Robots finish interiors,<br/>digital as-built handover"]
     end
-    C -- "verified" --> D
-    E --> F
+    S1 -- "verified" --> S2
+    S2 --> S3
 ```
 
 1. **Rehearse before you build.** The AI turns the drawings into scripts for every arm and robot, runs the full 90 days in a digital twin, and fixes clashes and sequencing conflicts before anything happens on site.
