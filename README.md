@@ -102,9 +102,9 @@ This repository is an **interactive 3D simulation** of that idea: a 12-storey se
 
 ## Under the hood
 
-- **Procedural model.** A Blender 5.2 Python script generates the whole site: 102 part types placed 3,288 times, about 445,000 triangles, plus a 90-day schedule with 1,072 lifting tasks and 238 robot timelines. Everything is exported as one GLB and one JSON file.
+- **Procedural model.** A Blender 5.2 Python script generates the whole site: 102 part types placed 3,288 times, about 445,000 triangles, plus a 90-day schedule with 1,072 lifting tasks and 238 robot timelines. Everything is exported as one GLB and one JSON file. See [`blender/`](blender/).
 - **Time lives on the GPU.** Each instance carries its own appear and remove time. Parts are drawn with `InstancedMesh`, and a custom shader reveals them against a single time uniform, so scrubbing 90 days never rebuilds the scene.
-- **One source for the site and the film.** The intro film was captured frame by frame from this same simulation under a virtual clock with Playwright, then narrated, subtitled and encoded with ffmpeg.
+- **One source for the site and the film.** The intro film was captured frame by frame from this same simulation under a virtual clock with Playwright, then narrated, subtitled and rendered with HyperFrames. Every shot is a function in a storyboard file, and the narration sets each shot's length. See [`video/`](video/).
 - **No build step.** Plain ES modules and Three.js from a CDN. Clone it and serve the folder.
 
 ```bash
@@ -123,6 +123,8 @@ Requires a browser with WebGL2.
 | `schedule.json` | Phases, rig climbing keys, instances, lifting tasks and robot timelines |
 | `parts.glb.txt` | The 102 part meshes (base64 GLB) |
 | `intro.mp4` | The 2-minute narrated introduction |
+| [`blender/`](blender/) | The procedural generator that writes `schedule.json` and `parts.glb.txt` |
+| [`video/`](video/) | Storyboard, frame capture, narration, music and subtitle pipeline for the film |
 
 > [!NOTE]
 > SkyRig is a concept. The schedule, quantities, scenarios and AI rehearsal are illustrative and have not been checked by cost estimates, structural analysis or a real construction programme.
@@ -182,9 +184,9 @@ Requires a browser with WebGL2.
 
 ### 技術做法
 
-- **程序化建模：** 用 Blender 5.2 的 Python 腳本生成整個工地，包含 102 種零件、3,288 件構件、約 44.5 萬個三角面，以及 1,072 筆吊裝任務和 238 段機器人排程，輸出成一個 GLB 和一個 JSON。
+- **程序化建模：** 用 Blender 5.2 的 Python 腳本生成整個工地，包含 102 種零件、3,288 件構件、約 44.5 萬個三角面，以及 1,072 筆吊裝任務和 238 段機器人排程，輸出成一個 GLB 和一個 JSON。原始碼在 [`blender/`](blender/)。
 - **時間交給 GPU：** 每件構件都記錄自己的出現與移除時間，用 `InstancedMesh` 繪製，再由自訂 shader 依同一個時間值決定顯示，拖曳 90 天時間軸不必重建場景。
-- **網頁和影片同一個來源：** 介紹影片用 Playwright 在虛擬時鐘下逐幀錄製這個模擬，再配上旁白、字幕，用 ffmpeg 輸出。
+- **網頁和影片同一個來源：** 介紹影片用 Playwright 在虛擬時鐘下逐幀錄製這個模擬，再配上旁白、字幕，用 HyperFrames 輸出。每個鏡頭是分鏡檔裡的一個函式，鏡頭長度由旁白決定。原始碼在 [`video/`](video/)。
 - **不需要建置：** 純 ES modules，Three.js 從 CDN 載入，下載後用任何靜態伺服器就能執行。
 
 > [!NOTE]

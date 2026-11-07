@@ -1,0 +1,16 @@
+# Blender 重建時產生的中間檔
+parts.glb
+blender/tex/
+blender/*.blend
+blender/*.blend1
+__pycache__/
+
+# 影片流程的中間檔與素材
+video/node_modules/
+video/voice/
+video/vo/
+video/final/
+video/hf/
+video/sfx/
+video/list.txt
+video/at.txt

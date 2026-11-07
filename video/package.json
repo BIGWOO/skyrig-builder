@@ -1,0 +1,7 @@
+{
+  "private": true,
+  "description": "SkyRig intro film capture: drives the simulation frame by frame",
+  "dependencies": {
+    "playwright-core": "^1.64.1"
+  }
+}
